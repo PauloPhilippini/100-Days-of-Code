@@ -1,0 +1,32 @@
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+opcao = input("Escreva 'codificar' para encriptar, ou 'decodificar' para decriptar a mensagem:\n")
+text = input("Digite sua mensagem:\n").lower()
+shift = int(input("Valor da cifra:\n"))
+
+def encrypt(plain_text, shift_amount):
+  cipher_text = ''
+  for letter in plain_text:
+    position = alphabet.index(letter) 
+    new_position = position + shift_amount
+    new_letter = alphabet[new_position]
+    cipher_text += new_letter
+  print(f'The encoded text is {cipher_text}')
+
+def decode(encoded_text, shift_amount):
+  decoded_text = ''
+  for letter in encoded_text:
+    position = alphabet.index(letter)
+    new_position = position - shift_amount
+    new_letter = alphabet[new_position]
+    decoded_text += new_letter
+  print(f'The decoded text is {decoded_text}')
+
+if opcao == 'codificar':
+  encrypt(plain_text=text, shift_amount=shift)
+elif opcao == 'decodificar':
+  decode(encoded_text=text, shift_amount=shift)
+else:
+  print('Invalid input')
+
+
