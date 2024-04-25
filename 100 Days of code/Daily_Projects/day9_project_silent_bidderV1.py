@@ -21,7 +21,7 @@ bids = {}
 def check_higher_bids (bid_record):
     highest_bid = 0
     winner_name = ''
-    for bidder in bid_record():
+    for bidder in bid_record:
         bid_amount = bid_record[bidder]
         if bid_amount > highest_bid:
            highest_bid = bid_amount
