@@ -1,0 +1,86 @@
+import random
+logo = '''
+     ____.                          .___                    .___.__      .__       .__                  
+    |    | ____   ____   ____     __| _/____    _____     __| _/|__|__  _|__| ____ |  |__ _____ _______ 
+    |    |/  _ \ / ___\ /  _ \   / __ |\__  \   \__  \   / __ | |  \  \/ /  |/    \|  |  \\__  \\_  __ 
+/\__|    (  <_> ) /_/  >  <_> ) / /_/ | / __ \_  / __ \_/ /_/ | |  |\   /|  |   |  \   Y  \/ __ \|  | \/
+\________|\____/\___  / \____/  \____ |(____  / (____  /\____ | |__| \_/ |__|___|  /___|  (____  /__|   
+               /_____/               \/     \/       \/      \/                  \/     \/     \/       
+'''
+print(logo)
+
+
+def dificuldade():
+    dificuldade = input('Selecione uma dificuldade: Facil (10 tentativas) ou Dificil (5 tentativas): ').lower()
+    if dificuldade == 'facil':
+        easy_game()
+    elif dificuldade == 'dificil':
+        hard_game()
+    else:
+        print('Dificuldade não reconhecida')
+            
+def easy_game():   
+    computador = random.randint(0, 100) 
+    game_over = False
+    contador_chutes = 10
+    palpites = []
+   
+    while not game_over:
+       jogador = int(input(('Digite o seu palpite: ')))
+       contador_chutes -=1
+       if contador_chutes == 0:
+            print(f'Restam {contador_chutes} tentativas')
+            palpites.append(jogador)
+            print(f'Acabaram suas chances, pensei no número: {computador} e você chutou os numeros:{palpites}')
+            game_over = True
+       elif jogador == computador and contador_chutes == 10:
+            palpites.append(jogador)
+            game_over = True
+            print(f'Nossa você acertou de primeira! Pensei no número: {computador} e você só preciosou de {contador_chutes} tentativa!!')
+       elif jogador < computador:
+            print('Pensei em um numero maior...')
+            print(f'Restam {contador_chutes} tentativas')
+            palpites.append(jogador)
+       elif jogador > computador:
+            print('Pensei em um numero menor...')
+            print(f'Restam {contador_chutes} tentativas')
+            palpites.append(jogador)
+       else:
+            palpites.append(jogador)
+            game_over = True
+            print(f'Você acertou pensei no número: {computador} e você chutou os numeros:{palpites}, preciosou de {contador_chutes} tentativas')
+
+def hard_game():   
+    computador = random.randint(0, 100) 
+    game_over = False
+    contador_chutes = 5
+    palpites = []
+   
+    while not game_over:
+       jogador = int(input(('Digite o seu palpite: ')))
+       contador_chutes -=1
+       if contador_chutes == 0:
+            print(f'Restam {contador_chutes} tentativas')
+            palpites.append(jogador)
+            print(f'Acabaram suas chances, pensei no número: {computador} e você chutou os numeros:{palpites}')
+            game_over = True
+       elif jogador == computador and contador_chutes == 1:
+            palpites.append(jogador)
+            game_over = True
+            print(f'Nossa você acertou de primeira! Pensei no número: {computador} e você só preciosou de {contador_chutes} tentativa!!')
+       elif jogador < computador:
+            print('Pensei em um numero maior...')
+            print(f'Restam {contador_chutes} tentativas')
+            palpites.append(jogador)
+       elif jogador > computador:
+            print('Pensei em um numero menor...')
+            print(f'Restam {contador_chutes} tentativas')
+            palpites.append(jogador)
+       else:
+            palpites.append(jogador)
+            game_over = True
+            print(f'Você acertou pensei no número: {computador} e você chutou os numeros:{palpites}, preciosou de {contador_chutes} tentativas')
+    
+
+while input("Vamos jogar um jodo da adivinhação? 's' ou 'n': ") == "s":
+    dificuldade()
